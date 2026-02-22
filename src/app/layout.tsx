@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/layout/Header";
+// import Header from "@/components/layout/Header";
 
 // 1. Fuente para Títulos
 const mitchaella = localFont({
@@ -34,7 +34,7 @@ export default function RootLayout({
         // Las variables CSS de las fuentes se inyectan aquí para que estén disponibles en todo el DOM
         className={`${mitchaella.variable} ${madeEvolve.variable} bg-brand-offwhite text-brand-green antialiased`}
       >
-        <Header/>
+       {/* <Header/> */}
         {children}
       </body>
     </html>
