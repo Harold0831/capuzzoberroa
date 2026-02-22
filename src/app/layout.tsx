@@ -19,7 +19,7 @@ const madeEvolve = localFont({
 
 // 3. SEO Básico 
 export const metadata: Metadata = {
-  title: "Capuzzo & Berroa | Firma de Abogados",
+  title: "Capuzzo & Berroa | Legal Studio",
   description: "Firma de abogados expertos brindando soluciones legales de excelencia.",
 };
 
