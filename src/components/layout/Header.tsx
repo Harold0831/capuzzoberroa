@@ -15,10 +15,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo */}
-        <Link href="/" className="font-heading text-2xl text-brand-gold tracking-wider z-50">
-          CAPUZZO & BERROA
+        <Link href="/" className="flex flex-col items-center z-50 group">
+          <span className="font-heading text-2xl text-brand-gold tracking-wider leading-none group-hover:text-brand-offwhite transition-colors">
+            CAPUZZO & BERROA
+          </span>
+          <span className="font-body text-[0.65rem] tracking-[0.3em] text-brand-beige mt-1">
+            LEGAL STUDIO
+          </span>
         </Link>
-
+        
         {/* Navegación Desktop */}
         <nav className="hidden md:flex gap-8 font-body font-medium tracking-wide items-center">
           <Link href="/" className="hover:text-brand-gold transition-colors">Inicio</Link>

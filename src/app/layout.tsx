@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/layout/Header";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import Footer from "@/components/layout/Footer";
 
 // 1. Fuente para Títulos
 const mitchaella = localFont({
@@ -19,7 +21,7 @@ const madeEvolve = localFont({
 
 // 3. SEO Básico 
 export const metadata: Metadata = {
-  title: "Capuzzo & Berroa | Firma de Abogados",
+  title: "Capuzzo & Berroa | Legal Studio",
   description: "Firma de abogados expertos brindando soluciones legales de excelencia.",
 };
 
@@ -29,13 +31,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className="scroll-smooth"> {/* Agregué scroll-smooth para enlaces ancla */}
       <body
-        // Las variables CSS de las fuentes se inyectan aquí para que estén disponibles en todo el DOM
-        className={`${mitchaella.variable} ${madeEvolve.variable} bg-brand-offwhite text-brand-green antialiased`}
+        className={`${mitchaella.variable} ${madeEvolve.variable} font-body bg-brand-offwhite text-brand-green antialiased flex flex-col min-h-screen`}
       >
-        <Header/>
-        {children}
+        <Header />
+        
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
+
+        <WhatsAppButton />
+        
       </body>
     </html>
   );
