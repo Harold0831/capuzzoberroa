@@ -9,7 +9,7 @@ export default function Home() {
           CAPUZZO & BERROA
         </h1>
         <p className="font-heading text-xl md:text-2xl text-brand-offwhite mb-4 italic">
-          Firma de Abogados
+          Legal Studio
         </p>
         
         <div className="w-16 h-1 bg-brand-gold mx-auto mb-8"></div>
