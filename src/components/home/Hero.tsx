@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section className="bg-brand-green text-brand-offwhite py-24 md:py-32 px-6 relative overflow-hidden">
-      {/* Elemento decorativo */}
+      {/* Elemento decorativo a */}
       <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none z-0">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-gold rounded-full blur-3xl"></div>
       </div>
