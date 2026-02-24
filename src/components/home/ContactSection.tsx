@@ -32,7 +32,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h3 className="font-semibold text-brand-gold mb-1">Nuestra Oficina</h3>
-                <p className="text-brand-beige">Av. Principal 123, Edificio Legal, Piso 4.<br/>Santo Domingo, República Dominicana</p>
+                <p className="text-brand-beige">Plaza Paseo del Teatro, Avenida Máximo Gómez <br/> No. 60, La Esperilla, Local 107<br/>Santo Domingo, República Dominicana</p>
               </div>
             </div>
 

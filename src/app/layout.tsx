@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth"> {/* Agregué scroll-smooth para enlaces ancla */}
+    <html lang="es" className="scroll-smooth">
       <body
         className={`${mitchaella.variable} ${madeEvolve.variable} font-body bg-brand-offwhite text-brand-green antialiased flex flex-col min-h-screen`}
       >

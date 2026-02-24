@@ -45,7 +45,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-4 font-body text-brand-beige text-sm">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand-gold shrink-0 mt-0.5" />
-                <span>Av. Principal 123, Edificio Legal, Piso 4.<br/>Santo Domingo, D.N.</span>
+                <span>Plaza Paseo del Teatro, Avenida Máximo Gómez No. 60, La Esperilla, Local 107<br/>Santo Domingo</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-brand-gold shrink-0" />
@@ -65,7 +65,7 @@ export default function Footer() {
               <a href="#" target="_blank" rel="noopener noreferrer" className="bg-brand-gold/10 p-3 rounded-sm text-brand-gold hover:bg-brand-gold hover:text-brand-green transition-all" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="bg-brand-gold/10 p-3 rounded-sm text-brand-gold hover:bg-brand-gold hover:text-brand-green transition-all" aria-label="Instagram">
+              <a href="https://www.instagram.com/capuzzoyberroa/" target="_blank" rel="noopener noreferrer" className="bg-brand-gold/10 p-3 rounded-sm text-brand-gold hover:bg-brand-gold hover:text-brand-green transition-all" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
             </div>
