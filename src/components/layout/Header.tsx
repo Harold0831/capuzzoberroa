@@ -1,70 +1,103 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Función para alternar el estado del menú
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { href: "/", label: "Inicio" },
+    { href: "/nosotros", label: "Nosotros" },
+    { href: "/servicios", label: "Servicios" },
+    { href: "/noticias", label: "Noticias" },
+    { href: "/#contacto", label: "Contacto" },
+  ];
 
   return (
-    <header className="bg-brand-green text-brand-offwhite sticky top-0 z-50 shadow-md">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-brand-green/95 backdrop-blur-md shadow-lg py-3"
+          : "bg-transparent py-5"
+      }`}
+    >
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex flex-col items-center z-50 group">
-          <span className="font-heading text-2xl text-brand-gold tracking-wider leading-none group-hover:text-brand-offwhite transition-colors">
-            CAPUZZO & BERROA
-          </span>
-          <span className="font-body text-[0.65rem] tracking-[0.3em] text-brand-beige mt-1">
-            LEGAL STUDIO
-          </span>
+        <Link href="/" className="relative z-10">
+          <Image
+            src="/logo-header.png"
+            alt="Capuzzo & Berroa"
+            width={scrolled ? 140 : 160}
+            height={scrolled ? 45 : 50}
+            className="transition-all duration-500"
+            priority
+          />
         </Link>
-        
-        {/* Navegación Desktop */}
-        <nav className="hidden md:flex gap-8 font-body font-medium tracking-wide items-center">
-          <Link href="/" className="hover:text-brand-gold transition-colors">Inicio</Link>
-          <Link href="/nosotros" className="hover:text-brand-gold transition-colors">Firma</Link>
-          <Link href="/servicios" className="hover:text-brand-gold transition-colors">Servicios</Link>
-          <Link href="/noticias" className="hover:text-brand-gold transition-colors">Noticias</Link>
-          <Link 
-            href="/contacto" 
-            className="bg-brand-gold text-brand-green px-5 py-2 rounded hover:bg-opacity-90 transition-all font-semibold ml-4"
-          >
-            Contacto
-          </Link>
-        </nav>
 
-        {/* Botón de Menú Móvil (Oculto en Desktop) */}
-        <button 
-          className="md:hidden text-brand-gold z-50 p-2"
-          onClick={toggleMenu}
+        {/* Desktop Nav */}
+        <ul className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="font-body text-sm text-brand-offwhite/80 tracking-[0.15em] uppercase hover:text-brand-gold transition-colors duration-300 relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden relative z-10 w-8 h-8 flex flex-col justify-center items-center gap-1.5"
           aria-label="Menú"
         >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          <span
+            className={`block w-6 h-[1.5px] bg-brand-gold transition-all duration-300 ${
+              mobileOpen ? "rotate-45 translate-y-1.25" : ""
+            }`}
+          />
+          <span
+            className={`block w-6 h-[1.5px] bg-brand-gold transition-all duration-300 ${
+              mobileOpen ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`block w-6 h-[1.5px] bg-brand-gold transition-all duration-300 ${
+              mobileOpen ? "-rotate-45 -translate-y-1.25" : ""
+            }`}
+          />
         </button>
-      </div>
 
-      {/* Pantalla Completa del Menú Móvil */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-0 left-0 w-full h-screen bg-brand-green flex flex-col items-center justify-center gap-8 font-body text-xl z-40">
-          {/* Al hacer clic en un enlace, cerramos el menú */}
-          <Link href="/" onClick={toggleMenu} className="hover:text-brand-gold transition-colors">Inicio</Link>
-          <Link href="/nosotros" onClick={toggleMenu} className="hover:text-brand-gold transition-colors">Firma</Link>
-          <Link href="/servicios" onClick={toggleMenu} className="hover:text-brand-gold transition-colors">Servicios</Link>
-          <Link href="/noticias" onClick={toggleMenu} className="hover:text-brand-gold transition-colors">Noticias</Link>
-          <Link 
-            href="/contacto" 
-            onClick={toggleMenu}
-            className="bg-brand-gold text-brand-green px-8 py-3 rounded hover:bg-opacity-90 transition-all font-semibold mt-4"
-          >
-            Contacto
-          </Link>
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden fixed inset-0 bg-brand-green/98 backdrop-blur-lg flex flex-col items-center justify-center gap-8 transition-all duration-500 ${
+            mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="font-heading text-3xl text-brand-gold tracking-wider hover:text-brand-offwhite transition-colors duration-300"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
-      )}
+      </nav>
     </header>
   );
 }

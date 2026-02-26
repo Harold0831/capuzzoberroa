@@ -2,14 +2,14 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* 1. Colores principales */
-  --color-brand-green: #324034;
-  --color-brand-gold: #A68660;
-  --color-brand-gray: #8C7E72;
-  --color-brand-beige: #BFB8AA;
-  --color-brand-offwhite: #F2F2F2;
+  /* 1. Paleta de Colores — Brand Guidelines Capuzzo & Berroa (Figma) */
+  --color-brand-green: #2B382E;     /* Verde profundo — calma, estabilidad */
+  --color-brand-gold: #9F875B;      /* Dorado — prestigio, excelencia */
+  --color-brand-gray: #958878;      /* Gris cálido — equilibrio, objetividad */
+  --color-brand-beige: #C5C0AD;     /* Beige neutro — sofisticación */
+  --color-brand-offwhite: #EBE7DE;  /* Fondo claro */
 
-  /* 2. Tipografías principales - Se definen como "familias" para Tailwind v4 */
+  /* 2. Tipografías principales */
   --font-heading: var(--font-mitchaella), ui-serif, Georgia, serif;
   --font-body: var(--font-made-evolve), ui-sans-serif, system-ui, sans-serif;
 }
@@ -20,5 +20,58 @@
     background-color: var(--color-brand-offwhite);
     color: var(--color-brand-green);
     font-family: var(--font-made-evolve), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Transiciones suaves para enfoque accesible */
+  *:focus-visible {
+    outline: 2px solid #9F875B;
+    outline-offset: 2px;
+  }
+
+  /* Imágenes optimizadas por defecto */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2B382E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9F875B;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C5C0AD;
+}
+
+/* Scroll suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selección de texto con colores de marca */
+::selection {
+  background-color: #9F875B;
+  color: #2B382E;
+}
+
+/* Prose refinado para artículos */
+.prose blockquote {
+  border-left-color: #9F875B40;
+  font-style: italic;
+}
+
+.prose hr {
+  border-color: #95887820;
 }
