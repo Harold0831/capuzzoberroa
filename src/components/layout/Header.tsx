@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
@@ -15,8 +16,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo */}
-        <Link href="/" className="font-heading text-2xl text-brand-gold tracking-wider z-50">
-          CAPUZZO & BERROA
+        <Link href="/" className="relative z-50">
+          <Image
+            src="/logo.png"
+            alt="Capuzzo & Berroa Legal Studio"
+            width={180}
+            height={48}
+            className="h-10 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Navegación Desktop */}
