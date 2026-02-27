@@ -1,0 +1,189 @@
+/* ===== Sanity Studio — Brand Theme (Capuzzo & Berroa) ===== */
+/* Sobrescribe las CSS custom properties internas de @sanity/ui  */
+
+/* --- Modo oscuro (default del Studio) --- */
+:root, 
+[data-scheme="dark"],
+[data-ui="Navbar"],
+[data-ui="PresenceMenu"] {
+  --card-bg-color: #1e2a20 !important;
+  --card-bg2-color: #243026 !important;
+  --card-fg-color: #EBE7DE !important;
+  --card-border-color: #3a4a3c !important;
+  --card-muted-fg-color: #C5C0AD !important;
+  --card-focus-ring-color: #9F875B !important;
+  --card-link-color: #9F875B !important;
+  --card-accent-fg-color: #9F875B !important;
+  --card-shadow-outline-color: rgba(159, 135, 91, 0.3) !important;
+}
+
+/* Navbar */
+[data-ui="Navbar"] {
+  background-color: #2B382E !important;
+  --card-bg-color: #2B382E !important;
+  border-bottom: 1px solid #3a4a3c !important;
+}
+
+/* Botones primarios (Publish, etc) */
+[data-ui="Button"][data-tone="primary"],
+button[data-tone="primary"] {
+  --card-bg-color: #9F875B !important;
+  --card-fg-color: #2B382E !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Botones primarios hover */
+[data-ui="Button"][data-tone="primary"]:hover,
+button[data-tone="primary"]:hover {
+  --card-bg-color: #b89b6d !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(159, 135, 91, 0.3) !important;
+}
+
+/* Botones generales - bordes más suaves */
+[data-ui="Button"] {
+  border-radius: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+/* Tab activo */
+[data-ui="TabList"] button[aria-selected="true"],
+[data-ui="Tab"][aria-selected="true"] {
+  color: #9F875B !important;
+}
+
+/* Indicador debajo del tab activo */
+[data-ui="TabList"] button[aria-selected="true"]::after,
+[data-ui="Tab"][aria-selected="true"]::after {
+  background-color: #9F875B !important;
+}
+
+/* Badges */
+[data-ui="Badge"] {
+  --badge-fg-color: #9F875B !important;
+  border-radius: 999px !important;
+}
+
+/* Inputs focus */
+input:focus, 
+textarea:focus,
+[data-ui="TextInput"]:focus-within,
+[contenteditable]:focus {
+  --input-border-color: #9F875B !important;
+  --card-focus-ring-color: #9F875B !important;
+  border-color: #9F875B !important;
+  box-shadow: 0 0 0 1px #9F875B !important;
+}
+
+/* Inputs - bordes más suaves */
+input,
+textarea,
+[data-ui="TextInput"] {
+  border-radius: 6px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Item seleccionado en listas */
+[data-selected="true"],
+[data-active="true"],
+[aria-selected="true"] {
+  --card-bg-color: #9F875B25 !important;
+}
+
+/* Links y textos de acento */
+a[data-ui="TextWithTone"],
+[data-ui="TextWithTone"][data-tone="primary"] {
+  color: #9F875B !important;
+}
+
+/* Cards y paneles — suavizar bordes */
+[data-ui="Card"] {
+  border-radius: 8px !important;
+}
+
+/* Dialog/Modal ventanas */
+[data-ui="Dialog"] [data-ui="Card"] {
+  border-radius: 12px !important;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Preview cards en la lista de documentos */
+[data-ui="PreviewCard"] {
+  border-radius: 8px !important;
+  transition: background-color 0.15s ease !important;
+}
+
+/* Tooltips */
+[data-ui="Tooltip"] [data-ui="Card"] {
+  background-color: #2B382E !important;
+  border: 1px solid #3a4a3c !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Menu popover */
+[data-ui="MenuButton__popover"] [data-ui="Card"],
+[data-ui="Popover"] [data-ui="Card"] {
+  border-radius: 10px !important;
+  border: 1px solid #3a4a3c !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Menu items hover */
+[data-ui="MenuItem"]:hover,
+[data-ui="MenuItem"][data-selected] {
+  background-color: #9F875B18 !important;
+}
+
+/* Spinner / Loading */
+[data-ui="Spinner"] circle {
+  stroke: #9F875B !important;
+}
+
+/* Status dots */
+[data-ui="StatusButton"] [data-ui="Badge"] {
+  --badge-dot-color: #9F875B !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1e2a20;
+}
+::-webkit-scrollbar-thumb {
+  background: #9F875B;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C5C0AD;
+}
+
+/* Selection */
+::selection {
+  background-color: #9F875B !important;
+  color: #2B382E !important;
+}
+
+/* ---- Mensajes de validación amigables ---- */
+[data-ui="ValidationList"] [data-ui="Card"] {
+  border-radius: 8px !important;
+  border-left: 3px solid #9F875B !important;
+}
+
+/* ---- Empty state styling ---- */
+[data-testid="empty-list"] {
+  opacity: 0.7;
+}
+
+/* ---- Smooth page transitions ---- */
+[data-ui="PaneLayout"] {
+  transition: opacity 0.2s ease !important;
+}
+
+/* ---- Pane headers ---- */
+[data-ui="PaneHeader"] {
+  border-bottom: 1px solid #3a4a3c !important;
+}

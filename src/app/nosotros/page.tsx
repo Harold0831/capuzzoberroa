@@ -70,19 +70,29 @@ export default function NosotrosPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {pilares.map((pilar, index) => {
               const Icon = pilar.icon;
+              const num = String(index + 1).padStart(2, "0");
               return (
                 <AnimatedSection key={pilar.title} delay={index * 0.1}>
-                  <div className="group bg-white p-8 lg:p-10 border border-brand-gray/10 text-center hover:border-brand-gold/30 hover:shadow-lg transition-all duration-500 h-full relative overflow-hidden">
-                    {/* Línea superior dorada */}
-                    <div className="absolute top-0 left-0 w-0 h-px bg-brand-gold group-hover:w-full transition-all duration-500" />
+                  <div className="group bg-white rounded-2xl p-8 lg:p-10 border border-brand-gray/8 text-center hover:border-brand-gold/30 shadow-sm hover:shadow-xl transition-all duration-500 h-full relative overflow-hidden">
+                    {/* Número sutil de fondo */}
+                    <span className="absolute top-3 right-4 font-heading text-5xl text-brand-gray/5 group-hover:text-brand-gold/10 transition-colors duration-500 select-none leading-none">
+                      {num}
+                    </span>
                     
-                    <div className="bg-brand-green/5 w-16 h-16 mx-auto flex items-center justify-center text-brand-green mb-6 group-hover:bg-brand-green group-hover:text-brand-gold transition-all duration-500">
-                      <Icon size={30} strokeWidth={1.3} />
+                    {/* Ícono */}
+                    <div className="w-14 h-14 rounded-xl bg-brand-green/5 mx-auto flex items-center justify-center text-brand-green mb-6 group-hover:bg-brand-green group-hover:text-brand-gold group-hover:scale-105 transition-all duration-500">
+                      <Icon size={28} strokeWidth={1.4} />
                     </div>
-                    <h3 className="font-heading text-xl text-brand-green mb-3">{pilar.title}</h3>
-                    <p className="font-body text-sm text-brand-gray leading-relaxed">
+
+                    <h3 className="font-heading text-xl text-brand-green mb-3 group-hover:text-brand-gold transition-colors duration-300">
+                      {pilar.title}
+                    </h3>
+                    <p className="font-body text-sm text-brand-gray/80 leading-relaxed">
                       {pilar.desc}
                     </p>
+
+                    {/* Borde inferior animado */}
+                    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold group-hover:w-full transition-all duration-500 ease-out" />
                   </div>
                 </AnimatedSection>
               );

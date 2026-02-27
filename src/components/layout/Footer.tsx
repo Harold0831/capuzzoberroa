@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail, Linkedin, Instagram } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
@@ -17,13 +18,14 @@ export default function Footer() {
           
           {/* Columna 1: Marca */}
           <AnimatedSection className="lg:col-span-1">
-            <Link href="/" className="flex flex-col mb-8 w-fit group">
-              <span className="font-heading text-2xl text-brand-gold tracking-wider leading-none group-hover:text-brand-offwhite transition-colors duration-300">
-                CAPUZZO & BERROA
-              </span>
-              <span className="font-body text-[0.6rem] tracking-[0.35em] text-brand-beige/60 mt-1.5 uppercase">
-                Legal Studio
-              </span>
+            <Link href="/" className="block mb-8 w-fit group">
+              <Image
+                src="/logo-header.png"
+                alt="Capuzzo & Berroa"
+                width={220}
+                height={70}
+                className="transition-opacity duration-300 group-hover:opacity-80"
+              />
             </Link>
             <p className="font-body text-brand-beige/70 text-sm leading-relaxed">
               Firma de abogados comprometida con la excelencia, la ética profesional 

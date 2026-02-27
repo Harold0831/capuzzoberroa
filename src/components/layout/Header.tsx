@@ -1,12 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+
+// Rutas con fondo claro donde el header transparente necesita texto oscuro
+const lightBgRoutes = ["/contacto"];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isLightBg = lightBgRoutes.some((r) => pathname.startsWith(r));
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -14,12 +21,15 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Cuando NO ha hecho scroll y el fondo es claro → texto oscuro + logo oscuro
+  const useDarkText = isLightBg && !scrolled;
+
   const navLinks = [
     { href: "/", label: "Inicio" },
     { href: "/nosotros", label: "Nosotros" },
     { href: "/servicios", label: "Servicios" },
     { href: "/noticias", label: "Noticias" },
-    { href: "/#contacto", label: "Contacto" },
+    { href: "/contacto", label: "Contacto" },
   ];
 
   return (
@@ -34,7 +44,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="relative z-10">
           <Image
-            src="/logo-header.png"
+            src={useDarkText ? "/logo.png" : "/logo-header.png"}
             alt="Capuzzo & Berroa"
             width={scrolled ? 140 : 160}
             height={scrolled ? 45 : 50}
@@ -49,7 +59,11 @@ export default function Header() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="font-body text-sm text-brand-offwhite/80 tracking-[0.15em] uppercase hover:text-brand-gold transition-colors duration-300 relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full"
+                className={`font-body text-sm tracking-[0.15em] uppercase transition-colors duration-300 relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-px after:transition-all after:duration-300 hover:after:w-full ${
+                  useDarkText
+                    ? "text-brand-green/80 hover:text-brand-gold after:bg-brand-gold"
+                    : "text-brand-offwhite/80 hover:text-brand-gold after:bg-brand-gold"
+                }`}
               >
                 {link.label}
               </Link>
@@ -64,18 +78,18 @@ export default function Header() {
           aria-label="Menú"
         >
           <span
-            className={`block w-6 h-[1.5px] bg-brand-gold transition-all duration-300 ${
-              mobileOpen ? "rotate-45 translate-y-1.25" : ""
+            className={`block w-6 h-[1.5px] transition-all duration-300 ${
+              mobileOpen ? "rotate-45 translate-y-1.25 bg-brand-gold" : useDarkText ? "bg-brand-green" : "bg-brand-gold"
             }`}
           />
           <span
-            className={`block w-6 h-[1.5px] bg-brand-gold transition-all duration-300 ${
-              mobileOpen ? "opacity-0" : ""
+            className={`block w-6 h-[1.5px] transition-all duration-300 ${
+              mobileOpen ? "opacity-0 bg-brand-gold" : useDarkText ? "bg-brand-green" : "bg-brand-gold"
             }`}
           />
           <span
-            className={`block w-6 h-[1.5px] bg-brand-gold transition-all duration-300 ${
-              mobileOpen ? "-rotate-45 -translate-y-1.25" : ""
+            className={`block w-6 h-[1.5px] transition-all duration-300 ${
+              mobileOpen ? "-rotate-45 -translate-y-1.25 bg-brand-gold" : useDarkText ? "bg-brand-green" : "bg-brand-gold"
             }`}
           />
         </button>
