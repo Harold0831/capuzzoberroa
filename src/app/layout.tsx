@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import Footer from "@/components/layout/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 // 1. Fuente para Títulos
 const mitchaella = localFont({
@@ -43,7 +44,8 @@ export default function RootLayout({
         <Footer />
 
         <WhatsAppButton />
-        
+
+        <Analytics />
       </body>
     </html>
   );
