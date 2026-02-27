@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 // import Header from "@/components/layout/Header";
+import { Analytics } from "@vercel/analytics/react";
 
 // 1. Fuente para Títulos
 const mitchaella = localFont({
@@ -36,6 +37,7 @@ export default function RootLayout({
       >
        {/* <Header/> */}
         {children}
+        <Analytics />
       </body>
     </html>
   );
